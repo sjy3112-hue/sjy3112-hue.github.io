@@ -184,6 +184,7 @@ function renderEducation() {
 function renderProjects() {
     const container = document.getElementById('projectsContent');
     console.log('프로젝트 데이터:', portfolioData.projects);
+    console.log('프로젝트 개수:', portfolioData.projects ? portfolioData.projects.length : 0);
     if (!portfolioData.projects || portfolioData.projects.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">프로젝트 정보를 추가해주세요.</p>';
         return;

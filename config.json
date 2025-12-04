@@ -1,0 +1,32 @@
+{
+  "profile": {
+    "name": "송지연",
+    "title": "정보보안 엔지니어",
+    "photo": "",
+    "email": "",
+    "phone": "",
+    "location": "",
+    "bio": "",
+    "social": {
+      "github": "",
+      "linkedin": "",
+      "blog": ""
+    }
+  },
+  "desiredPosition": {
+    "title": "정보보안 엔지니어",
+    "description": "",
+    "focus": "클라우드 보안"
+  },
+  "qualifications": [],
+  "education": [],
+  "projects": [],
+  "sections": [
+    "profile",
+    "desiredPosition",
+    "qualifications",
+    "education",
+    "projects"
+  ]
+}
+

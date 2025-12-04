@@ -187,24 +187,28 @@ function renderProjects() {
         return;
     }
     
-    container.innerHTML = portfolioData.projects.map(project => `
-        <div class="project-card">
-            <div class="project-title">${project.title || ''}</div>
-            ${project.description ? `<div class="project-description">${project.description}</div>` : ''}
-            ${project.tech && project.tech.length > 0 ? `
-                <div class="project-tech">
-                    ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
-                </div>
-            ` : ''}
-            <div class="project-actions">
-                ${project.pdf ? `
-                    <a href="${project.pdf}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-                        👁️ PDF 보기
-                    </a>
-                    <a href="${project.pdf}" class="btn btn-secondary" download>
-                        📥 PDF 다운로드
-                    </a>
+    container.innerHTML = portfolioData.projects.map((project, index) => `
+        <div class="project-wrapper">
+            <div class="project-card">
+                <div class="project-title">${project.title || ''}</div>
+                ${project.description ? `<div class="project-description">${project.description}</div>` : ''}
+                ${project.tech && project.tech.length > 0 ? `
+                    <div class="project-tech">
+                        ${project.tech.map(t => `<span class="tech-tag">${t}</span>`).join('')}
+                    </div>
                 ` : ''}
+                <div class="project-actions">
+                    ${project.pdf ? `
+                        <button class="btn btn-primary" onclick="togglePreview(${index})">
+                            👁️ PDF 미리보기
+                        </button>
+                        <a href="${project.pdf}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
+                            📄 새 탭에서 보기
+                        </a>
+                        <a href="${project.pdf}" class="btn btn-secondary" download>
+                            📥 PDF 다운로드
+                        </a>
+                    ` : ''}
                 ${project.github ? `
                     <a href="${project.github}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
                         🔗 GitHub
@@ -215,10 +219,36 @@ function renderProjects() {
                         🌐 데모
                     </a>
                 ` : ''}
+                </div>
             </div>
+            ${project.pdf ? `
+                <div class="pdf-preview" id="preview-${index}" style="display: none;">
+                    <div class="pdf-preview-header">
+                        <h3>${project.title || ''} - PDF 미리보기</h3>
+                        <button class="close-preview" onclick="togglePreview(${index})">✕ 닫기</button>
+                    </div>
+                    <iframe src="${project.pdf}" class="pdf-iframe" frameborder="0"></iframe>
+                </div>
+            ` : ''}
         </div>
     `).join('');
 }
+
+// PDF 미리보기 토글 함수
+function togglePreview(index) {
+    const preview = document.getElementById(`preview-${index}`);
+    if (preview) {
+        if (preview.style.display === 'none') {
+            preview.style.display = 'block';
+            preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        } else {
+            preview.style.display = 'none';
+        }
+    }
+}
+
+// 전역 함수로 등록
+window.togglePreview = togglePreview;
 
 // 섹션 가시성 체크 및 애니메이션
 function checkSectionVisibility() {

@@ -165,6 +165,7 @@ function renderExperience() {
 // 학력 섹션 렌더링
 function renderEducation() {
     const container = document.getElementById('educationContent');
+    console.log('학력 데이터:', portfolioData.education);
     if (!portfolioData.education || portfolioData.education.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">학력 정보를 추가해주세요.</p>';
         return;

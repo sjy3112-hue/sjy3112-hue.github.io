@@ -146,6 +146,7 @@ function renderQualifications() {
 // 경력 섹션 렌더링
 function renderExperience() {
     const container = document.getElementById('experienceContent');
+    console.log('경력 데이터:', portfolioData.experience);
     if (!portfolioData.experience || portfolioData.experience.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">경력 정보를 추가해주세요.</p>';
         return;

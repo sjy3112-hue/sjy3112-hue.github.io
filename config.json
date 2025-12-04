@@ -52,7 +52,20 @@
       "description": "운영 및 문서관리 / 대외 대내 소통"
     }
   ],
-  "education": [],
+  "education": [
+    {
+      "school": "한국폴리텍대학 대전캠퍼스",
+      "major": "클라우드보안과",
+      "degree": "직업훈련과정",
+      "period": "2025.03 ~ 2026.02"
+    },
+    {
+      "school": "대전보건대학교",
+      "major": "노인보건복지과",
+      "degree": "졸업",
+      "period": "2006.02"
+    }
+  ],
   "projects": [
     {
       "title": "프로젝트 인프라보안구축",

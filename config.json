@@ -40,12 +40,6 @@
       "description": "인프라 보안 구축 프로젝트",
       "tech": ["정보보안", "인프라", "보안구축"],
       "pdf": "assets/pdfs/infrastructure-security.pdf"
-    },
-    {
-      "title": "Argos 지능형 침입 탐지 시스템",
-      "description": "지능형 침입 탐지 시스템 개발 프로젝트",
-      "tech": ["침입탐지", "IDS", "보안시스템"],
-      "pdf": "assets/pdfs/argos-ids.pdf"
     }
   ],
   "sections": [

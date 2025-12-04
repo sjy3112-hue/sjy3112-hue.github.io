@@ -10,7 +10,7 @@
 - 🏫 학력(Education) 섹션
 - 🚀 프로젝트 섹션 (PDF 다운로드 지원)
 - 📱 반응형 디자인
-- 🎨 모던한 UI (글래스모피즘, 그라데이션)
+- 🎨 깔끔한 라이트 테마 디자인
 
 ## 커스터마이징 방법
 
@@ -24,6 +24,10 @@
     "name": "송지연",
     "title": "정보보안 엔지니어",
     "photo": "assets/images/profile.jpg",  // 프로필 사진 경로 (선택사항)
+    // 프로필 사진 추가 방법:
+    // 1. assets/images/ 폴더에 사진 파일을 저장 (예: profile.jpg)
+    // 2. 위의 photo 필드에 경로를 입력 (예: "assets/images/profile.jpg")
+    // 3. 사진이 없으면 이름의 이니셜이 표시됩니다
     "email": "your.email@example.com",
     "phone": "010-1234-5678",
     "location": "서울, 대한민국",

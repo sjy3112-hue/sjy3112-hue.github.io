@@ -1,17 +1,17 @@
 :root {
-    --primary-color: #6366f1;
-    --secondary-color: #8b5cf6;
-    --accent-color: #ec4899;
-    --bg-primary: #0f172a;
-    --bg-secondary: #1e293b;
-    --bg-card: rgba(30, 41, 59, 0.6);
-    --text-primary: #f1f5f9;
-    --text-secondary: #cbd5e1;
-    --text-muted: #94a3b8;
-    --border-color: rgba(148, 163, 184, 0.2);
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
-    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.3);
+    --primary-color: #2563eb;
+    --secondary-color: #3b82f6;
+    --accent-color: #1d4ed8;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
     --gradient-primary: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --gradient-accent: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
 }
@@ -30,21 +30,6 @@ body {
     overflow-x: hidden;
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-        radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
-}
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -56,11 +41,12 @@ body::before {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(15, 23, 42, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
     padding: 1rem 0;
+    box-shadow: var(--shadow-sm);
 }
 
 .navbar .container {
@@ -72,10 +58,7 @@ body::before {
 .nav-brand {
     font-size: 1.5rem;
     font-weight: 700;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--primary-color);
 }
 
 .nav-menu {
@@ -93,7 +76,7 @@ body::before {
 }
 
 .nav-menu a:hover {
-    color: var(--text-primary);
+    color: var(--primary-color);
 }
 
 .nav-menu a::after {
@@ -103,7 +86,7 @@ body::before {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--gradient-primary);
+    background: var(--primary-color);
     transition: width 0.3s ease;
 }
 
@@ -119,6 +102,7 @@ body::before {
     justify-content: center;
     padding: 8rem 0 4rem;
     text-align: center;
+    background: linear-gradient(to bottom, #f8fafc, #ffffff);
 }
 
 .hero-content {
@@ -142,7 +126,7 @@ body::before {
     font-size: 4rem;
     color: white;
     box-shadow: var(--shadow-lg);
-    border: 4px solid rgba(255, 255, 255, 0.1);
+    border: 4px solid white;
     position: relative;
     overflow: hidden;
 }
@@ -158,10 +142,7 @@ body::before {
     font-size: 3.5rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
 }
 
 .hero-title {
@@ -190,8 +171,7 @@ body::before {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background: var(--bg-card);
-    backdrop-filter: blur(10px);
+    background: var(--bg-secondary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -203,8 +183,10 @@ body::before {
 
 .social-links a:hover {
     transform: translateY(-5px);
-    background: var(--gradient-primary);
+    background: var(--primary-color);
+    color: white;
     box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 /* Sections */
@@ -213,6 +195,7 @@ body::before {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease, transform 0.6s ease;
+    background: var(--bg-primary);
 }
 
 .section.visible {
@@ -220,15 +203,16 @@ body::before {
     transform: translateY(0);
 }
 
+.section:nth-child(even) {
+    background: var(--bg-secondary);
+}
+
 .section-title {
     font-size: 2.5rem;
     font-weight: 700;
     margin-bottom: 3rem;
     text-align: center;
-    background: var(--gradient-primary);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--text-primary);
     position: relative;
     display: inline-block;
     width: 100%;
@@ -242,25 +226,24 @@ body::before {
     transform: translateX(-50%);
     width: 80px;
     height: 4px;
-    background: var(--gradient-primary);
+    background: var(--primary-color);
     border-radius: 2px;
 }
 
 /* Card */
 .card {
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2.5rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-sm);
     transition: all 0.3s ease;
 }
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 /* Qualifications Grid */
@@ -272,13 +255,13 @@ body::before {
 
 .qualification-card {
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2rem;
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    box-shadow: var(--shadow-sm);
 }
 
 .qualification-card::before {
@@ -288,7 +271,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 4px;
-    background: var(--gradient-primary);
+    background: var(--primary-color);
     transform: scaleX(0);
     transition: transform 0.3s ease;
 }
@@ -299,7 +282,8 @@ body::before {
 
 .qualification-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .qualification-name {
@@ -329,19 +313,19 @@ body::before {
 
 .education-item {
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2rem;
     margin-bottom: 2rem;
     position: relative;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .education-item:hover {
     transform: translateX(10px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .education-item::before {
@@ -353,7 +337,7 @@ body::before {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: var(--gradient-primary);
+    background: var(--primary-color);
     border: 4px solid var(--bg-primary);
     box-shadow: var(--shadow-md);
 }
@@ -391,19 +375,19 @@ body::before {
 
 .experience-item {
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2rem;
     margin-bottom: 2rem;
     position: relative;
     transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
 }
 
 .experience-item:hover {
     transform: translateX(10px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .experience-item::before {
@@ -415,7 +399,7 @@ body::before {
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: var(--gradient-accent);
+    background: var(--secondary-color);
     border: 4px solid var(--bg-primary);
     box-shadow: var(--shadow-md);
 }
@@ -455,19 +439,19 @@ body::before {
 
 .project-card {
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 16px;
     padding: 2rem;
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--shadow-sm);
 }
 
 .project-card:hover {
     transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(99, 102, 241, 0.5);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-color);
 }
 
 .project-title {
@@ -492,13 +476,13 @@ body::before {
 }
 
 .tech-tag {
-    background: rgba(99, 102, 241, 0.2);
+    background: rgba(37, 99, 235, 0.1);
     color: var(--primary-color);
     padding: 0.4rem 1rem;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 500;
-    border: 1px solid rgba(99, 102, 241, 0.3);
+    border: 1px solid rgba(37, 99, 235, 0.2);
 }
 
 .project-actions {
@@ -521,7 +505,7 @@ body::before {
 }
 
 .btn-primary {
-    background: var(--gradient-primary);
+    background: var(--primary-color);
     color: white;
     box-shadow: var(--shadow-sm);
 }
@@ -529,17 +513,19 @@ body::before {
 .btn-primary:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
+    background: var(--secondary-color);
 }
 
 .btn-secondary {
-    background: var(--bg-card);
+    background: var(--bg-secondary);
     color: var(--text-primary);
     border: 1px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-    background: var(--bg-secondary);
-    border-color: rgba(99, 102, 241, 0.5);
+    background: var(--bg-card);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 /* Footer */
@@ -591,7 +577,8 @@ body::before {
         grid-template-columns: 1fr;
     }
 
-    .education-item::before {
+    .education-item::before,
+    .experience-item::before {
         left: -10px;
         width: 20px;
         height: 20px;
@@ -612,8 +599,8 @@ body::before {
     .card,
     .qualification-card,
     .education-item,
+    .experience-item,
     .project-card {
         padding: 1.5rem;
     }
 }
-

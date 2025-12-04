@@ -126,6 +126,7 @@ function renderDesiredPosition() {
 // 자격사항 섹션 렌더링
 function renderQualifications() {
     const container = document.getElementById('qualificationsContent');
+    console.log('자격사항 데이터:', portfolioData.qualifications);
     if (!portfolioData.qualifications || portfolioData.qualifications.length === 0) {
         container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">자격사항 정보를 추가해주세요.</p>';
         return;

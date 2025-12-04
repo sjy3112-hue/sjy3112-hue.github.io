@@ -63,10 +63,10 @@
   ],
   "sections": [
     "profile",
-    "desiredPosition",
-    "qualifications",
-    "experience",
     "education",
+    "experience",
+    "qualifications",
+    "desiredPosition",
     "projects"
   ]
 }

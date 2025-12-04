@@ -315,21 +315,21 @@ function renderPortfolio() {
     renderSocialLinks();
     renderNavMenu();
     
-    // 섹션별 렌더링
-    if (portfolioData.sections.includes('desiredPosition')) {
-        renderDesiredPosition();
-    }
-    
-    if (portfolioData.sections.includes('qualifications')) {
-        renderQualifications();
+    // 섹션별 렌더링 (순서대로)
+    if (portfolioData.sections.includes('education')) {
+        renderEducation();
     }
     
     if (portfolioData.sections.includes('experience')) {
         renderExperience();
     }
     
-    if (portfolioData.sections.includes('education')) {
-        renderEducation();
+    if (portfolioData.sections.includes('qualifications')) {
+        renderQualifications();
+    }
+    
+    if (portfolioData.sections.includes('desiredPosition')) {
+        renderDesiredPosition();
     }
     
     if (portfolioData.sections.includes('projects')) {

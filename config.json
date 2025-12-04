@@ -66,6 +66,26 @@
       "period": "2006.02"
     }
   ],
+  "skills": {
+    "categories": [
+      {
+        "name": "보안 도구",
+        "items": []
+      },
+      {
+        "name": "프로그래밍 언어",
+        "items": []
+      },
+      {
+        "name": "클라우드 플랫폼",
+        "items": []
+      },
+      {
+        "name": "시스템/네트워크",
+        "items": []
+      }
+    ]
+  },
   "projects": [
     {
       "title": "프로젝트 인프라보안구축",
@@ -86,6 +106,7 @@
     "experience",
     "qualifications",
     "desiredPosition",
+    "skills",
     "projects"
   ]
 }

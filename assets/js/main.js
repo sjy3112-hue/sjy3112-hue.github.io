@@ -83,6 +83,7 @@ function renderNavMenu() {
         qualifications: '자격사항',
         experience: '경력',
         education: '학력',
+        skills: '기술 스택',
         projects: '프로젝트'
     };
     
@@ -139,6 +140,31 @@ function renderQualifications() {
             ${qual.issuer ? `<div class="qualification-issuer">${qual.issuer}</div>` : ''}
             ${qual.date ? `<div class="qualification-date">취득일: ${qual.date}</div>` : ''}
             ${qual.number ? `<div class="qualification-date">자격번호: ${qual.number}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+// 기술 스택 섹션 렌더링
+function renderSkills() {
+    const container = document.getElementById('skillsContent');
+    if (!portfolioData.skills || !portfolioData.skills.categories || portfolioData.skills.categories.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">기술 스택 정보를 추가해주세요.</p>';
+        return;
+    }
+    
+    const categories = portfolioData.skills.categories.filter(cat => cat.items && cat.items.length > 0);
+    
+    if (categories.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">기술 스택 정보를 추가해주세요.</p>';
+        return;
+    }
+    
+    container.innerHTML = categories.map(category => `
+        <div class="skills-category">
+            <h3 class="skills-category-title">${category.name}</h3>
+            <div class="skills-list">
+                ${category.items.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+            </div>
         </div>
     `).join('');
 }
@@ -348,6 +374,10 @@ function renderPortfolio() {
     
     if (portfolioData.sections.includes('desiredPosition')) {
         renderDesiredPosition();
+    }
+    
+    if (portfolioData.sections.includes('skills')) {
+        renderSkills();
     }
     
     if (portfolioData.sections.includes('projects')) {

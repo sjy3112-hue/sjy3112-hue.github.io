@@ -199,7 +199,7 @@ function renderProjects() {
                 ` : ''}
                 <div class="project-actions">
                     ${project.pdf ? `
-                        <button class="btn btn-primary" onclick="togglePreview(${index})">
+                        <button class="btn btn-primary" onclick="openPdfModal('${project.pdf}', '${project.title || ''}')">
                             👁️ PDF 미리보기
                         </button>
                         <a href="${project.pdf}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">
@@ -221,34 +221,68 @@ function renderProjects() {
                 ` : ''}
                 </div>
             </div>
-            ${project.pdf ? `
-                <div class="pdf-preview" id="preview-${index}" style="display: none;">
-                    <div class="pdf-preview-header">
-                        <h3>${project.title || ''} - PDF 미리보기</h3>
-                        <button class="close-preview" onclick="togglePreview(${index})">✕ 닫기</button>
-                    </div>
-                    <iframe src="${project.pdf}" class="pdf-iframe" frameborder="0"></iframe>
-                </div>
-            ` : ''}
         </div>
     `).join('');
 }
 
-// PDF 미리보기 토글 함수
-function togglePreview(index) {
-    const preview = document.getElementById(`preview-${index}`);
-    if (preview) {
-        if (preview.style.display === 'none') {
-            preview.style.display = 'block';
-            preview.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        } else {
-            preview.style.display = 'none';
-        }
+// PDF 모달 열기 함수
+function openPdfModal(pdfUrl, title) {
+    // 모달이 없으면 생성
+    let modal = document.getElementById('pdfModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'pdfModal';
+        modal.className = 'pdf-modal';
+        modal.innerHTML = `
+            <div class="pdf-modal-content">
+                <div class="pdf-modal-header">
+                    <h2 id="pdfModalTitle">PDF 미리보기</h2>
+                    <button class="pdf-modal-close" onclick="closePdfModal()">✕</button>
+                </div>
+                <div class="pdf-modal-body">
+                    <iframe id="pdfModalFrame" src="" frameborder="0"></iframe>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        
+        // 모달 배경 클릭 시 닫기
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closePdfModal();
+            }
+        });
+    }
+    
+    // 모달 내용 업데이트
+    document.getElementById('pdfModalTitle').textContent = title || 'PDF 미리보기';
+    document.getElementById('pdfModalFrame').src = pdfUrl;
+    
+    // 모달 표시
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+// PDF 모달 닫기 함수
+function closePdfModal() {
+    const modal = document.getElementById('pdfModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.getElementById('pdfModalFrame').src = '';
+        document.body.style.overflow = '';
     }
 }
 
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closePdfModal();
+    }
+});
+
 // 전역 함수로 등록
-window.togglePreview = togglePreview;
+window.openPdfModal = openPdfModal;
+window.closePdfModal = closePdfModal;
 
 // 섹션 가시성 체크 및 애니메이션
 function checkSectionVisibility() {

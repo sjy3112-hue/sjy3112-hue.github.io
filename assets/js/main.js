@@ -309,6 +309,16 @@ function checkSectionVisibility() {
 
 // 포트폴리오 전체 렌더링
 function renderPortfolio() {
+    // 기술 스택 섹션 즉시 제거 (최우선)
+    const skillsSection = document.getElementById('skills');
+    if (skillsSection) {
+        skillsSection.remove();
+    }
+    const skillsContent = document.getElementById('skillsContent');
+    if (skillsContent) {
+        skillsContent.parentElement?.remove();
+    }
+    
     // 프로필 정보
     document.getElementById('heroName').textContent = portfolioData.profile.name;
     document.getElementById('heroTitle').textContent = portfolioData.profile.title || '';
@@ -353,6 +363,18 @@ function renderPortfolio() {
     if (portfolioData.sections.includes('projects')) {
         renderProjects();
     }
+    
+    // 기술 스택 섹션 다시 한번 제거 (안전장치)
+    setTimeout(() => {
+        const skillsSection2 = document.getElementById('skills');
+        if (skillsSection2) {
+            skillsSection2.remove();
+        }
+        const skillsContent2 = document.getElementById('skillsContent');
+        if (skillsContent2) {
+            skillsContent2.parentElement?.remove();
+        }
+    }, 50);
     
     // 섹션 가시성 체크 시작
     setTimeout(() => {

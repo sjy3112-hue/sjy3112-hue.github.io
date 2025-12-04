@@ -143,33 +143,6 @@ function renderQualifications() {
     `).join('');
 }
 
-// 기술 스택 섹션 렌더링
-function renderSkills() {
-    const container = document.getElementById('skillsContent');
-    console.log('기술 스택 데이터:', portfolioData.skills);
-    if (!portfolioData.skills || !portfolioData.skills.categories || portfolioData.skills.categories.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">기술 스택 정보를 추가해주세요.</p>';
-        return;
-    }
-    
-    const categories = portfolioData.skills.categories.filter(cat => cat.items && cat.items.length > 0);
-    console.log('필터링된 카테고리:', categories);
-    
-    if (categories.length === 0) {
-        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">기술 스택 정보를 추가해주세요.</p>';
-        return;
-    }
-    
-    container.innerHTML = categories.map(category => `
-        <div class="skills-category">
-            <h3 class="skills-category-title">${category.name}</h3>
-            <div class="skills-list">
-                ${category.items.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
-            </div>
-        </div>
-    `).join('');
-}
-
 // 경력 섹션 렌더링
 function renderExperience() {
     const container = document.getElementById('experienceContent');

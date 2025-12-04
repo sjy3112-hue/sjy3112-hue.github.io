@@ -538,46 +538,6 @@ body {
     color: var(--primary-color);
 }
 
-/* Skills Section */
-.skills-category {
-    margin-bottom: 2.5rem;
-}
-
-.skills-category-title {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--text-primary);
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-}
-
-.skill-tag {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    padding: 0.6rem 1.2rem;
-    border-radius: 25px;
-    font-size: 0.95rem;
-    font-weight: 500;
-    border: 1px solid var(--border-color);
-    transition: all 0.3s ease;
-    display: inline-block;
-}
-
-.skill-tag:hover {
-    background: var(--primary-color);
-    color: white;
-    border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-sm);
-}
-
 /* PDF 모달 */
 .pdf-modal {
     display: none;

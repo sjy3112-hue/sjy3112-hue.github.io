@@ -4,11 +4,12 @@ let portfolioData = {};
 // config.json 로드
 async function loadConfig() {
     try {
-        const response = await fetch('config.json');
+        const response = await fetch('config.json?v=' + Date.now());
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         portfolioData = await response.json();
+        console.log('포트폴리오 데이터 로드 완료:', portfolioData);
         renderPortfolio();
     } catch (error) {
         console.error('config.json을 불러오는 중 오류가 발생했습니다:', error);

@@ -18,7 +18,26 @@
     "description": "",
     "focus": "클라우드 보안"
   },
-  "qualifications": [],
+  "qualifications": [
+    {
+      "name": "네트워크관리사 2급",
+      "issuer": "",
+      "date": "2025.07.01",
+      "number": ""
+    },
+    {
+      "name": "컴퓨터활용능력",
+      "issuer": "",
+      "date": "2002.12.30",
+      "number": ""
+    },
+    {
+      "name": "자동차운전면허증 2종 보통",
+      "issuer": "",
+      "date": "2018.09.11",
+      "number": ""
+    }
+  ],
   "experience": [
     {
       "company": "제이와이",

@@ -14,11 +14,12 @@ async function loadConfig() {
         console.error('config.json을 불러오는 중 오류가 발생했습니다:', error);
         // 오류 메시지를 화면에 표시
         document.body.innerHTML = `
-            <div style="padding: 2rem; text-align: center; color: #f1f5f9;">
-                <h1>오류 발생</h1>
-                <p>config.json 파일을 불러올 수 없습니다.</p>
-                <p style="color: #94a3b8; font-size: 0.9rem;">${error.message}</p>
-                <p style="margin-top: 1rem; color: #94a3b8;">로컬 서버를 실행하고 http://localhost:8000으로 접속해주세요.</p>
+            <div style="padding: 2rem; text-align: center; color: #1e293b; background: #ffffff; min-height: 100vh; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                <h1 style="color: #2563eb; margin-bottom: 1rem;">오류 발생</h1>
+                <p style="color: #475569; margin-bottom: 0.5rem;">config.json 파일을 불러올 수 없습니다.</p>
+                <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 1rem;">${error.message}</p>
+                <p style="margin-top: 1rem; color: #64748b;">로컬 서버를 실행하고 http://localhost:8000으로 접속해주세요.</p>
+                <p style="margin-top: 0.5rem; color: #64748b; font-size: 0.9rem;">또는 파일을 직접 열면 CORS 오류가 발생할 수 있습니다.</p>
             </div>
         `;
     }

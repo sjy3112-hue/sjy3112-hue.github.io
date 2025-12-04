@@ -83,7 +83,6 @@ function renderNavMenu() {
         qualifications: '자격사항',
         experience: '경력',
         education: '학력',
-        skills: '기술 스택',
         projects: '프로젝트'
     };
     
@@ -376,10 +375,6 @@ function renderPortfolio() {
     
     if (portfolioData.sections.includes('desiredPosition')) {
         renderDesiredPosition();
-    }
-    
-    if (portfolioData.sections.includes('skills')) {
-        renderSkills();
     }
     
     if (portfolioData.sections.includes('projects')) {

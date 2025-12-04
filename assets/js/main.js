@@ -310,7 +310,21 @@ function renderPortfolio() {
     // 프로필 정보
     document.getElementById('heroName').textContent = portfolioData.profile.name;
     document.getElementById('heroTitle').textContent = portfolioData.profile.title || '';
-    document.getElementById('heroBio').textContent = portfolioData.profile.bio || '';
+    const bioElement = document.getElementById('heroBio');
+    if (portfolioData.profile.bio) {
+        // 줄바꿈 처리 (이중 줄바꿈은 단락 구분, 단일 줄바꿈은 <br>로)
+        const bioText = portfolioData.profile.bio;
+        const paragraphs = bioText.split(/\n\n/).map(p => p.trim()).filter(p => p);
+        if (paragraphs.length > 1) {
+            // 여러 단락인 경우
+            bioElement.innerHTML = paragraphs.map(p => `<p style="margin-bottom: 1rem;">${p.replace(/\n/g, '<br>')}</p>`).join('');
+        } else {
+            // 단일 단락인 경우
+            bioElement.innerHTML = paragraphs[0].replace(/\n/g, '<br>');
+        }
+    } else {
+        bioElement.textContent = '';
+    }
     
     renderProfileImage();
     renderSocialLinks();

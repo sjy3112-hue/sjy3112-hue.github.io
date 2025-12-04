@@ -19,12 +19,27 @@
     "focus": "클라우드 보안"
   },
   "qualifications": [],
+  "experience": [
+    {
+      "company": "제이와이",
+      "position": "",
+      "period": "2009.08 ~ 2023.04",
+      "description": ""
+    },
+    {
+      "company": "대하가구공업",
+      "position": "",
+      "period": "2008 ~ 2009",
+      "description": ""
+    }
+  ],
   "education": [],
   "projects": [],
   "sections": [
     "profile",
     "desiredPosition",
     "qualifications",
+    "experience",
     "education",
     "projects"
   ]

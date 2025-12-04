@@ -5,10 +5,22 @@ let portfolioData = {};
 async function loadConfig() {
     try {
         const response = await fetch('config.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         portfolioData = await response.json();
         renderPortfolio();
     } catch (error) {
         console.error('config.json을 불러오는 중 오류가 발생했습니다:', error);
+        // 오류 메시지를 화면에 표시
+        document.body.innerHTML = `
+            <div style="padding: 2rem; text-align: center; color: #f1f5f9;">
+                <h1>오류 발생</h1>
+                <p>config.json 파일을 불러올 수 없습니다.</p>
+                <p style="color: #94a3b8; font-size: 0.9rem;">${error.message}</p>
+                <p style="margin-top: 1rem; color: #94a3b8;">로컬 서버를 실행하고 http://localhost:8000으로 접속해주세요.</p>
+            </div>
+        `;
     }
 }
 
@@ -21,8 +33,15 @@ function renderProfileImage() {
         img.alt = portfolioData.profile.name;
         profileImage.appendChild(img);
     } else {
-        // 초기 이니셜 표시
-        const initials = portfolioData.profile.name.split('').map(n => n[0]).join('').substring(0, 2);
+        // 초기 이니셜 표시 (한국어 이름 지원)
+        const name = portfolioData.profile.name;
+        let initials = '';
+        if (name.length >= 2) {
+            // 한국어 이름의 경우 첫 글자와 마지막 글자 사용
+            initials = name[0] + name[name.length - 1];
+        } else {
+            initials = name[0] || '?';
+        }
         profileImage.textContent = initials;
     }
 }
@@ -60,6 +79,7 @@ function renderNavMenu() {
         profile: '프로필',
         desiredPosition: '희망직무',
         qualifications: '자격사항',
+        experience: '경력',
         education: '학력',
         projects: '프로젝트'
     };
@@ -116,6 +136,24 @@ function renderQualifications() {
             ${qual.issuer ? `<div class="qualification-issuer">${qual.issuer}</div>` : ''}
             ${qual.date ? `<div class="qualification-date">취득일: ${qual.date}</div>` : ''}
             ${qual.number ? `<div class="qualification-date">자격번호: ${qual.number}</div>` : ''}
+        </div>
+    `).join('');
+}
+
+// 경력 섹션 렌더링
+function renderExperience() {
+    const container = document.getElementById('experienceContent');
+    if (!portfolioData.experience || portfolioData.experience.length === 0) {
+        container.innerHTML = '<p style="text-align: center; color: var(--text-muted);">경력 정보를 추가해주세요.</p>';
+        return;
+    }
+    
+    container.innerHTML = portfolioData.experience.map(exp => `
+        <div class="experience-item">
+            <div class="experience-company">${exp.company || ''}</div>
+            ${exp.position ? `<div class="experience-position">${exp.position}</div>` : ''}
+            ${exp.period ? `<div class="experience-period">${exp.period}</div>` : ''}
+            ${exp.description ? `<div class="experience-description">${exp.description}</div>` : ''}
         </div>
     `).join('');
 }
@@ -213,6 +251,10 @@ function renderPortfolio() {
     
     if (portfolioData.sections.includes('qualifications')) {
         renderQualifications();
+    }
+    
+    if (portfolioData.sections.includes('experience')) {
+        renderExperience();
     }
     
     if (portfolioData.sections.includes('education')) {

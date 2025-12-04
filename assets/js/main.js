@@ -198,8 +198,11 @@ function renderProjects() {
             ` : ''}
             <div class="project-actions">
                 ${project.pdf ? `
-                    <a href="${project.pdf}" class="btn btn-primary" download>
-                        📄 PDF 다운로드
+                    <a href="${project.pdf}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                        👁️ PDF 보기
+                    </a>
+                    <a href="${project.pdf}" class="btn btn-secondary" download>
+                        📥 PDF 다운로드
                     </a>
                 ` : ''}
                 ${project.github ? `
